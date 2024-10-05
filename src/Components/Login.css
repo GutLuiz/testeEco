@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box; /* Adiciona box-sizing a todos os elementos */
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../assets/fotoverde.jpg'); /* Endereço da sua imagem */
+    background-size: cover; /* Faz a imagem cobrir toda a área */
+    background-position: center; /* Centraliza a imagem */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Altura da tela */
+  }
+  
+  
+  .container {
+    display: flex;
+    flex-direction: column; /* Permite que os elementos fiquem em coluna */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form {
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com 80% de opacidade */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 450px; /* Aumenta a largura do formulário */
+  }
+  
+  
+  h1 {
+    text-align: center; /* Centraliza o título */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    color: black; /* Cor do texto em preto */
+    font-size: rem; /* Tamanho do texto reduzido */
+    white-space: nowrap; /* Impede que o texto quebre em múltiplas linhas */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: black; /* Cor do texto em preto */
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.05); /* Fundo das caixas com transparência */
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50; /* Cor verde */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Verde mais escuro ao passar o mouse */
+  }
+  /* Para Login.css e Register.css, adicione isso */
+
+/* Login.css */
+.login-message {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .register-link {
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  .register-link:hover {
+    color: darkblue;
+  }
+  
