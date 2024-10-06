@@ -1,0 +1,125 @@
+
+
+
+#wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    /* background-color: #eaf5ea; Fundo verde claro */
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #2a6a4f; /* Tom verde escuro para os títulos */
+}
+
+p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+section {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section.intro {
+    background-color: #c3e6c3; /* Fundo um pouco mais escuro para a seção de introdução */
+    padding: 40px 20px;
+    border-radius: 0;
+}
+
+section.intro header img {
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+section.intro p {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2a6a4f;
+}
+
+section .content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+ul.actions {
+    list-style: none;
+    padding: 0;
+}
+
+ul.actions li {
+    display: inline-block;
+    margin: 10px;
+}
+
+ul.actions li a.button {
+    background-color: #2a6a4f;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+ul.actions li a.button:hover {
+    background-color: #4ba379;
+}
+
+ul.feature-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+ul.feature-icons li {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #2a6a4f;
+}
+
+ul.items {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+ul.items li h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+ul.items li a {
+    text-decoration: none;
+    color: #2a6a4f;
+}
+
+ul.icons li a {
+    font-size: 1.4rem;
+    color: #2a6a4f;
+}
+
+footer {
+    margin-top: 50px;
+    text-align: center;
+}

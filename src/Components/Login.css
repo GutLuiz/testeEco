@@ -2,7 +2,13 @@
     box-sizing: border-box; /* Adiciona box-sizing a todos os elementos */
   }
   
-  body {
+  
+  
+  .container {
+    display: flex;
+    flex-direction: column; /* Permite que os elementos fiquem em coluna */
+    justify-content: center;
+    align-items: center;
     margin: 0;
     padding: 0;
     background-image: url('../assets/fotoverde.jpg'); /* Endereço da sua imagem */
@@ -12,14 +18,6 @@
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
     height: 100vh; /* Altura da tela */
-  }
-  
-  
-  .container {
-    display: flex;
-    flex-direction: column; /* Permite que os elementos fiquem em coluna */
-    justify-content: center;
-    align-items: center;
   }
   
   .form {
