@@ -8,6 +8,11 @@
     color: #333;
     line-height: 1.6;
     overflow: scroll;
+    background-image: url('../assets/a.jpeg');
+     background-size: cover; 
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+    background-attachment: fixed; 
 }
 
 /* Estilo do cabeçalho */
@@ -16,14 +21,15 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 20px;
-    background-color: #d3d3d307; /* Fundo cinza para visualização */
+    padding: 30px;
+    background-color: #d3d3d300; /* Fundo cinza para visualização */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+   
 }
 
 /* Estilo da logo */
 .logo img {
-    max-width: 120px;
+    max-width: 100px;
     height: auto;
 }
 
@@ -31,19 +37,19 @@ header {
 .right-content {
     display: flex;
     align-items: center;
-    gap: 20px; /* Espaço entre funcionalidades e botões */
+    gap: 80px; /* Espaço entre funcionalidades e botões */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 10px; /* Espaço entre as funcionalidades */
+    gap: 20px; /* Espaço entre as funcionalidades */
     margin-right: 10px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
     transition: color 0.3s;
 }
@@ -89,13 +95,19 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px); /* Calcula a altura com base no tamanho do cabeçalho */
+    height: calc(150vh - 700px); /* Calcula a altura com base no tamanho do cabeçalho */
     text-align: center;
    
+     
 }
+
 
 .impact-phrase p {
     font-size: 2rem; /* Aumentando o tamanho da frase */
     font-weight: bold;
-    color: #333;
+    color: #080808;
+    background-color: rgba(255, 255, 255, 0.842); 
+    padding: 18px; /* Espaçamento interno para não ficar tão grande */
+    border-radius: 20px;
+   
 }
