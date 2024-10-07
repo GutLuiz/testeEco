@@ -3,7 +3,7 @@
   }
   
   
-  .container {
+  .containereg {
     display: flex;
     flex-direction: column; /* Permite que os elementos fiquem em coluna */
     justify-content: center;

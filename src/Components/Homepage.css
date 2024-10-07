@@ -1,125 +1,101 @@
-
-
-
+/* Estrutura geral */
 #wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    width: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    /* background-color: #eaf5ea; Fundo verde claro */
     color: #333;
     line-height: 1.6;
+    overflow: scroll;
 }
 
+/* Estilo do cabeçalho */
 header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: #2a6a4f; /* Tom verde escuro para os títulos */
-}
-
-p {
-    font-size: 1.1rem;
-    color: #555;
-}
-
-section {
-    margin: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #d3d3d307; /* Fundo cinza para visualização */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-section.intro {
-    background-color: #c3e6c3; /* Fundo um pouco mais escuro para a seção de introdução */
-    padding: 40px 20px;
-    border-radius: 0;
-}
-
-section.intro header img {
-    max-width: 150px;
-    margin-bottom: 20px;
-}
-
-section.intro p {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #2a6a4f;
-}
-
-section .content img {
-    max-width: 100%;
+/* Estilo da logo */
+.logo img {
+    max-width: 120px;
     height: auto;
-    border-radius: 8px;
 }
 
-ul.actions {
-    list-style: none;
-    padding: 0;
-}
-
-ul.actions li {
-    display: inline-block;
-    margin: 10px;
-}
-
-ul.actions li a.button {
-    background-color: #2a6a4f;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-ul.actions li a.button:hover {
-    background-color: #4ba379;
-}
-
-ul.feature-icons {
-    list-style: none;
-    padding: 0;
+/* Estilo para a barra de navegação e botões */
+.right-content {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    gap: 20px; /* Espaço entre funcionalidades e botões */
 }
 
-ul.feature-icons li {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #2a6a4f;
-}
-
-ul.items {
+nav ul {
     list-style: none;
-    padding: 0;
     display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+    gap: 10px; /* Espaço entre as funcionalidades */
+    margin-right: 10px;
 }
 
-ul.items li h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-ul.items li a {
+nav ul li a {
     text-decoration: none;
-    color: #2a6a4f;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
-ul.icons li a {
-    font-size: 1.4rem;
-    color: #2a6a4f;
+nav ul li a:hover {
+    color: #2a6a4f; /* Tom verde escuro */
 }
 
-footer {
-    margin-top: 50px;
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.login-btn,
+.register-btn {
+    padding: 8px 12px; /* Reduzindo o tamanho dos botões */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.register-btn {
+    background-color: #ff3333;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #45a049;
+}
+
+.register-btn:hover {
+    background-color: #e60000;
+}
+
+/* Frase de impacto centralizada */
+.impact-phrase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px); /* Calcula a altura com base no tamanho do cabeçalho */
     text-align: center;
+   
+}
+
+.impact-phrase p {
+    font-size: 2rem; /* Aumentando o tamanho da frase */
+    font-weight: bold;
+    color: #333;
 }

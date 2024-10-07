@@ -5,7 +5,7 @@ import backgroundImage from '../assets/fotoverde.jpg'; // Importa a imagem
 
 const Register = () => {
   return (
-    <div className="container" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="containereg" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <form className="form">
         <h1>Faça seu registro</h1>
         <label>Email:</label>
