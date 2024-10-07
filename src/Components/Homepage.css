@@ -8,7 +8,7 @@
     color: #333;
     line-height: 1.6;
     overflow: scroll;
-    background-image: url('../assets/a.jpeg');
+    background-image: url('');
      background-size: cover; 
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Impede que a imagem se repita */

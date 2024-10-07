@@ -28,6 +28,9 @@ const Homepage = () => {
             <section className="impact-phrase">
                 <p>Descubra o futuro da mobilidade sustentável</p>
             </section> 
+
+            
+
         </div>
 
         
