@@ -3,32 +3,40 @@ import { Link } from 'react-router-dom'; // Importa Link do react-router-dom
 import { registerUser } from '../services/register-service'; // Importa a função de registro
 import './Register.css'; // Importa o CSS
 import backgroundImage from '../assets/fotoverde.jpg'; // Importa a imagem
+import { useNavigate } from 'react-router-dom';
+
 
 const Register = () => {
   const [email, setEmail] = useState(""); // Estado para o email
   const [senha, setSenha] = useState(""); // Estado para a senha
   const [message, setMessage] = useState(""); // Estado para mensagens de feedback
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault(); // Previne o comportamento padrão do formulário
 
     const userData = {
-      email: email,
-      senha: senha,
+        email: email,
+        senha: senha,
     };
 
     try {
-      const response = await registerUser(userData); // Chama a função de registro
-      console.log("Usuário registrado com sucesso:", response);
-      setMessage("Usuário registrado com sucesso!"); // Mensagem de sucesso
-      // Aqui você pode redirecionar o usuário para o login ou outra página
-      setEmail(""); // Limpa o campo de email
-      setSenha(""); // Limpa o campo de senha
+        const response = await registerUser(userData);
+        if (response != null) {
+            console.log("Usuário registrado com sucesso:", response);
+            setMessage("Usuário registrado com sucesso!");
+
+            // Redireciona para a homepage após o sucesso no registro
+            navigate('/homepage'); 
+        } 
+        setEmail(""); // Limpa o campo de email
+        setSenha(""); // Limpa o campo de senha
     } catch (error) {
-      console.error("Erro ao registrar usuário:", error);
-      setMessage("Erro ao registrar usuário: " + error.message); // Mensagem de erro
+        console.error("Erro ao registrar usuário:", error);
+        setMessage("Erro ao registrar usuário: "); // Mensagem de erro
     }
-  };
+};
+
 
   return (
     <div className="containereg" style={{ backgroundImage: `url(${backgroundImage})` }}>

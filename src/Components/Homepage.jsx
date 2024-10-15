@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll'; // Importando Link do react-scroll
-import './homepage.css'; // Certifique-se de que o caminho está correto
+import { Link } from 'react-scroll';
+import { useNavigate } from 'react-router-dom'; // Importando useNavigate
+import './homepage.css';
 
 const MapComponent = () => {
     useEffect(() => {
-        // Carregar a API do Google Maps
         const script = document.createElement('script');
         script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDYsqots6JyZEtLW3SaYnOnq4ZnjSDVhy0&callback=initMap`;
         script.async = true;
@@ -14,7 +14,7 @@ const MapComponent = () => {
         window.initMap = () => {
             const map = new window.google.maps.Map(document.getElementById('map'), {
                 zoom: 14,
-                center: { lat: -1.455833, lng: -48.503889 }, // Coordenadas de Belém, Pará
+                center: { lat: -1.455833, lng: -48.503889 },
             });
 
             const postos = [
@@ -29,60 +29,67 @@ const MapComponent = () => {
                     map: map,
                 });
 
-                // Adiciona um listener para abrir a página de agendamento ao clicar no marcador
                 marker.addListener('click', () => {
-                    window.location.href = '/agendamento'; // Redireciona para a página de agendamento
+                    window.location.href = '/agendamento';
                 });
             });
         };
     }, []);
 
-    return <div id="map" style={{ width: '100%', height: '600px' }}></div>; // Estilo do mapa ajustado
+    return <div id="map" style={{ width: '100%', height: '600px' }}></div>;
 };
 
 const Homepage = () => {
-    const [services, setServices] = useState([]); // Estado para armazenar os serviços
-    const [loadingServices, setLoadingServices] = useState(true); // Estado para carregamento dos serviços
-    const [additionalData, setAdditionalData] = useState([]); // Estado para dados adicionais
-    const [loadingAdditionalData, setLoadingAdditionalData] = useState(true); // Estado para carregamento dos dados adicionais
+    const navigate = useNavigate(); // Usando o useNavigate
+
+    const [services, setServices] = useState([]);
+    const [loadingServices, setLoadingServices] = useState(true);
+    const [additionalData, setAdditionalData] = useState([]);
+    const [loadingAdditionalData, setLoadingAdditionalData] = useState(true);
 
     useEffect(() => {
-        // Função para buscar serviços
         const fetchServices = async () => {
             try {
-                const response = await fetch('https://api.exemplo.com/servicos'); 
+                const response = await fetch('https://api.exemplo.com/servicos');
                 const data = await response.json();
-                setServices(data); 
-                setLoadingServices(false); 
+                setServices(data);
+                setLoadingServices(false);
             } catch (error) {
                 console.error("Erro ao buscar os serviços:", error);
-                setLoadingServices(false); 
+                setLoadingServices(false);
             }
         };
 
-        // Função para buscar dados adicionais
         const fetchAdditionalData = async () => {
             try {
-                const response = await fetch('https://api.exemplo.com/dados-adicionais'); 
+                const response = await fetch('https://api.exemplo.com/dados-adicionais');
                 const data = await response.json();
-                setAdditionalData(data); 
-                setLoadingAdditionalData(false); 
+                setAdditionalData(data);
+                setLoadingAdditionalData(false);
             } catch (error) {
                 console.error("Erro ao buscar dados adicionais:", error);
-                setLoadingAdditionalData(false); 
+                setLoadingAdditionalData(false);
             }
         };
 
-        fetchServices(); // Chama a função para buscar os serviços
-        fetchAdditionalData(); // Chama a função para buscar dados adicionais
-    }, []); 
+        fetchServices();
+        fetchAdditionalData();
+    }, []);
+
+    // Funções para navegar para as páginas de login e registro
+    const handleLoginClick = () => {
+        navigate('/'); // Navega para a página de login
+    };
+
+    const handleRegisterClick = () => {
+        navigate('/register'); // Navega para a página de registro
+    };
 
     return (
         <div id="wrapper">
-            {/* Cabeçalho */}
             <header>
                 <div className="logo">
-                    <img src="src/assets/eco.png" alt="Logo" /> {/* Insira o caminho da logo */}
+                    <img src="src/assets/eco.png" alt="Logo" />
                 </div>
                 <div className="right-content">
                     <nav>
@@ -94,19 +101,17 @@ const Homepage = () => {
                     </nav>
                 </div>
                 <div className="auth-buttons">
-                    <button className="login-btn">Registrar</button>
-                    <button className="register-btn">Entrar</button>
+                    <button className="login-btn" onClick={handleLoginClick}>Entrar</button> {/* Botão de Login */}
+                    <button className="register-btn" onClick={handleRegisterClick}>Registrar</button> {/* Botão de Registro */}
                 </div>
-            </header>   
+            </header>
 
-            {/* Frase de impacto */}
             <section className="impact-phrase">
                 <h1>Descubra o futuro da mobilidade sustentável</h1>
                 <p>Carregamento de carros elétricos com praticidade e inovação.</p>
                 <Link to="funcionalidade1" className="cta-button" smooth={true} duration={1100}>Saiba mais</Link>
             </section>
 
-            {/* Seção Nossos Serviços */}
             <section id="funcionalidade1" className="info-section">
                 <div className="info-content">
                     <h2>Nossos Serviços</h2>
@@ -125,13 +130,10 @@ const Homepage = () => {
                 </div>
             </section>
 
-            {/* Título acima do Mapa */}
             <h1 style={{ textAlign: 'center', margin: '20px 0', color: '#007bff' }}>Postos de Carregamento</h1>
 
-            {/* Mapa abaixo de Nossos Serviços */}
-            <MapComponent /> {/* Componente do mapa */}
+            <MapComponent />
 
-            {/* Seção Dados Adicionais */}
             <section id="funcionalidade4" className="info-section">
                 <div className="info-content">
                     <h2>Quer fazer um agendamento?</h2>
@@ -140,7 +142,6 @@ const Homepage = () => {
                 </div>
             </section>
 
-            {/* Seção Sobre nós */}
             <section id="funcionalidade2" className="info-section">
                 <div className="info-content">
                     <h2>Sobre nós</h2>
@@ -153,7 +154,6 @@ const Homepage = () => {
                 </div>
             </section>
 
-            {/* Seção Suporte ao Cliente */}
             <section id="funcionalidade3" className="info-section">
                 <div className="info-content">
                     <h2>Suporte ao Cliente</h2>
