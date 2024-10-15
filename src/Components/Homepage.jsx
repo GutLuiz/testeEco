@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Element } from 'react-scroll'; // Importando Link e Element do react-scroll
+import { Link } from 'react-scroll'; // Importando Link do react-scroll
 import './homepage.css'; // Certifique-se de que o caminho está correto
 
 const MapComponent = () => {
@@ -11,7 +11,6 @@ const MapComponent = () => {
         script.defer = true;
         document.body.appendChild(script);
 
-        
         window.initMap = () => {
             const map = new window.google.maps.Map(document.getElementById('map'), {
                 zoom: 14,
@@ -25,9 +24,14 @@ const MapComponent = () => {
             ];
 
             postos.forEach((location) => {
-                new window.google.maps.Marker({
+                const marker = new window.google.maps.Marker({
                     position: location,
                     map: map,
+                });
+
+                // Adiciona um listener para abrir a página de agendamento ao clicar no marcador
+                marker.addListener('click', () => {
+                    window.location.href = '/agendamento'; // Redireciona para a página de agendamento
                 });
             });
         };
@@ -74,12 +78,11 @@ const Homepage = () => {
     }, []); 
 
     return (
-
         <div id="wrapper">
             {/* Cabeçalho */}
             <header>
                 <div className="logo">
-                    <img src="src\assets\eco.png" alt="Logo" /> {/* Insira o caminho da logo */}
+                    <img src="src/assets/eco.png" alt="Logo" /> {/* Insira o caminho da logo */}
                 </div>
                 <div className="right-content">
                     <nav>
@@ -91,8 +94,8 @@ const Homepage = () => {
                     </nav>
                 </div>
                 <div className="auth-buttons">
-                        <button className="login-btn">Registrar</button>
-                        <button className="register-btn">Entrar</button>
+                    <button className="login-btn">Registrar</button>
+                    <button className="register-btn">Entrar</button>
                 </div>
             </header>   
 
@@ -129,16 +132,11 @@ const Homepage = () => {
             <MapComponent /> {/* Componente do mapa */}
 
             {/* Seção Dados Adicionais */}
-            
-            
-            
             <section id="funcionalidade4" className="info-section">
                 <div className="info-content">
                     <h2>Quer fazer um agendamento?</h2>
-                    
                     <p>Simplifique sua experiência de carregamento com nosso recurso de agendamento de recarga. Com essa funcionalidade, você pode planejar suas sessões de carregamento de forma prática e conveniente, garantindo que seu veículo elétrico esteja sempre pronto para rodar.</p>
-                    <a href="agendamento" className="cta-button">Clique aqui</a>
-
+                    <a href="/agendamento" className="cta-button">Clique aqui</a>
                 </div>
             </section>
 
@@ -171,6 +169,6 @@ const Homepage = () => {
             </section>
         </div>
     );
-}
+};
 
 export default Homepage;
