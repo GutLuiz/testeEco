@@ -4,7 +4,7 @@ import Login from './Components/Login';
 import Register from './Components/register';
 import Homepage from './Components/Homepage';
 import Agendamento from './Components/Agendamento';
-import DialogflowChat from './Components/DialogflowChat';
+
 
 const App = () => {
   return (
@@ -14,7 +14,7 @@ const App = () => {
         <Route path="/register" element={<Register />} /> {/* Página de Registro */}
         <Route path="/Homepage" element={<Homepage/>} />
         <Route path="/Agendamento" element={<Agendamento/>} />
-        <Route path="/DialogflowChat" element={<DialogflowChat/>} />
+      
       </Routes>
       </Router>
       

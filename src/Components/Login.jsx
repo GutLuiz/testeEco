@@ -1,8 +1,7 @@
-import { useState } from 'react'; // Adicione o useState
-import { Link, useNavigate } from 'react-router-dom'; // Importe o useNavigate para o redirecionamento
-import { loginUser } from '../services/login-service'; // Importe a função de login
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // Para navegação
+import { loginUser } from '../services/login-service'; // Função de login
 import './Login.css';
-import backgroundImage from '../assets/fotoverde.jpg';
 
 const Login = () => {
   const [username, setUsername] = useState(""); // Estado para o email
@@ -21,7 +20,6 @@ const Login = () => {
     try {
       const response = await loginUser(userData); // Chama a função de login
 
-      // Supondo que a resposta tenha uma chave `success` que indica se o login foi bem-sucedido
       if (response != null) {
         console.log("Login bem-sucedido:", response);
         setMessage("Login realizado com sucesso!");
@@ -35,31 +33,37 @@ const Login = () => {
   };
 
   return (
-    <div className="container" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <form className="form" onSubmit={handleLogin}> {/* Adicione onSubmit */}
-        <h1>Faça seu login</h1>
-        <label>Email:</label>
-        <input
-          type="email"
-          placeholder="Digite seu email"
-          required
-          value={username} // Vincula o estado ao input
-          onChange={(e) => setUsername(e.target.value)} // Atualiza o estado
-        />
-        <label>Senha:</label>
-        <input
-          type="password"
-          placeholder="Digite sua senha"
-          required
-          value={password} // Vincula o estado ao input
-          onChange={(e) => setPassword(e.target.value)} // Atualiza o estado
-        />
-        <button type="submit">Entrar</button>
-        {message && <p className="login-message">{message}</p>} {/* Mensagem de feedback */}
-        <p className="login-message">
-          Não tem uma conta? <Link to="/register" className="register-link">Registre-se!</Link>
-        </p>
-      </form>
+    <div className="login-body">
+      <div className="login-container">
+        <div className="login-left">
+          <h2>Não tem conta?</h2>
+          <p>Crie sua conta agora</p>
+          <button className="login-btn">Logar</button>
+        </div>
+        <div className="login-right">
+          <h2>Entre na sua conta</h2>
+          <form className="login-form" onSubmit={handleLogin}> {/* Adiciona o onSubmit */}
+            <div className="form-group">
+              <input 
+                type="email" 
+                placeholder="E-mail"
+                value={username} // Vincula ao estado do username
+                onChange={(e) => setUsername(e.target.value)} // Atualiza o estado ao digitar
+              />
+            </div>
+            <div className="form-group">
+              <input 
+                type="password" 
+                placeholder="Senha"
+                value={password} // Vincula ao estado do password
+                onChange={(e) => setPassword(e.target.value)} // Atualiza o estado ao digitar
+              />
+            </div>
+            <button type="submit" className="register-btn">Entrar</button> {/* Botão de submit */}
+          </form>
+          {message && <p>{message}</p>} {/* Exibe mensagens de feedback */}
+        </div>
+      </div>
     </div>
   );
 };

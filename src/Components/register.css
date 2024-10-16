@@ -1,69 +1,105 @@
-* {
-    box-sizing: border-box; /* Adiciona box-sizing a todos os elementos */
-  }
-  
-  
-  .containereg {
-    display: flex;
-    flex-direction: column; /* Permite que os elementos fiquem em coluna */
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-     /* Endereço da sua imagem */
-    background-size: cover; /* Faz a imagem cobrir toda a área */
-    background-position: center; /* Centraliza a imagem */
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100vh; /* Altura da tela */
-  }
-  
-  .form {
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com 80% de opacidade */
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 450px; /* Largura do formulário */
-  }
-  
-  h1 {
-    text-align: center; /* Centraliza o título */
-    margin-bottom: 20px; /* Espaço abaixo do título */
-    color: black; /* Cor do texto em preto */
-    font-size: 1rem; /* Tamanho do texto reduzido */
-    white-space: nowrap; /* Impede que o texto quebre em múltiplas linhas */
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    color: black; /* Cor do texto em preto */
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.05); /* Fundo das caixas com transparência */
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #4caf50; /* Cor verde */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049; /* Verde mais escuro ao passar o mouse */
-  }
-  /* Para Login.css e Register.css, adicione isso */
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+.register-body { /* Novo estilo para evitar conflitos */
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-  
+.register-container {
+  display: flex;
+  width: 900px;
+  height: 500px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.register-left {
+  background-color: #28a745;
+  color: #fff;
+  padding: 60px 40px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.register-left h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.register-left p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.register-left .login-btn {
+  background-color: #fff;
+  color: #28a745;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-left .login-btn:hover {
+  background-color: #f9f9f9;
+}
+
+.register-right {
+  padding: 60px 40px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-right h2 {
+  font-size: 1.8rem;
+  color: #28a745;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 1rem;
+}
+
+.register-btn {
+  background-color: #28a745;
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+  background-color: #218838;
+}

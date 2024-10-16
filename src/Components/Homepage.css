@@ -10,35 +10,35 @@ body {
     background-color: #f0f2f5;
     color: #333;
     line-height: 1.6;
-    
+    scroll-behavior: smooth; /* Suaviza o scroll */
 }
 
+/* Cabeçalho */
 header {
-    margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 10px;
-    background-color: #f8f8f8;
-    box-shadow: 0 4px 6px rgba(5, 5, 5, 0.1);
+    padding: 15px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-
-
-/* Cabeçalho */
-
-
 .logo img {
-    width: 150px;
+    width: 180px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1); /* Efeito de zoom na logo */
 }
 
 nav ul {
     display: flex;
     list-style: none;
-}
-
-nav ul li {
-    margin-left: 10px;
+    gap: 20px;
 }
 
 nav ul li a {
@@ -46,32 +46,33 @@ nav ul li a {
     color: #3a1a1a;
     font-weight: 500;
     padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 50px;
+    transition: background-color 0.4s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
     background-color: #056321;
     color: #fff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Botões de autenticação */
 .auth-buttons {
     display: flex;
+    gap: 15px;
 }
 
 .auth-buttons button {
     border: none;
-    padding: 10px 20px;
-    margin-left: 10px;
-    cursor: pointer;
+    padding: 10px 25px;
     font-weight: 600;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .auth-buttons .login-btn {
-    background-color: #05631b;
+    background-color: #28a745;
     color: #fff;
 }
 
@@ -81,8 +82,8 @@ nav ul li a:hover {
 }
 
 .auth-buttons button:hover {
-    opacity: 0.9;
-    transform: translateY(-2px); /* Efeito de elevação no hover */
+    transform: scale(1.05); /* Efeito de leve aumento ao passar o mouse */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* Frase de impacto */
@@ -91,112 +92,118 @@ nav ul li a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 90vh;
     text-align: center;
-    background: linear-gradient(135deg, #11cb74 0%, #2575fc 100%);
+    background: linear-gradient(135deg, #0fbba5 0%, #1a73e8 100%);
     color: #fff;
+    animation: fadeInUp 1.2s ease-in-out both;
 }
 
 .impact-phrase h1 {
-    font-size: 3.5rem; /* Aumentando o tamanho */
+    font-size: 3.8rem;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
 }
 
 .impact-phrase p {
     font-size: 1.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .cta-button {
-    background-color: #fff;
+    background-color: #ffffff;
     color: #007bff;
-    padding: 10px 30px;
+    padding: 12px 35px;
     font-size: 1rem;
     font-weight: 600;
-    border-radius: 30px;
+    border-radius: 50px;
     text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .cta-button:hover {
     background-color: #007bff;
     color: #fff;
-    transform: translateY(-2px); /* Efeito de elevação no hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Seções informativas */
 .info-section {
-    padding: 60px 20px;
-    margin: 40px 0;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    background: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 80px 20px;
+    margin: 50px 0;
+    border-radius: 25px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    transition: all 0.4s ease;
+    animation: fadeInUp 1s ease-in-out both;
 }
 
 .info-section:hover {
     transform: translateY(-10px);
-    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .info-content {
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
     text-align: center;
 }
 
 .info-content h2 {
-    font-size: 2.7rem;
+    font-size: 2.8rem;
     font-weight: 700;
-    margin-bottom: 20px;
     color: #007bff;
     position: relative;
+    margin-bottom: 25px;
 }
 
 .info-content h2:before {
     content: '';
     position: absolute;
-    width: 60px;
-    height: 4px;
-    background-color: #11cb74;
+    width: 70px;
+    height: 5px;
+    background-color: #0fbba5;
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .info-content p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #555;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+    line-height: 1.8;
 }
 
 .info-content ul {
-    list-style: none;
-    padding: 0;
-    font-size: 1.1rem;
+    list-style: disc;
+    padding-left: 40px;
+    font-size: 1.2rem;
     color: #333;
 }
 
 .info-content ul li {
     padding: 10px 0;
-    border-bottom: 1px solid #ddd; /* Adicionando borda para cada item */
     transition: background-color 0.3s ease;
 }
 
 .info-content ul li:hover {
-    background-color: #f8f9fa; /* Mudança de fundo ao passar o mouse */
+    background-color: #f0f0f0;
 }
 
 /* Estilos do Mapa */
 #map {
-    width: 100%; /* A largura do mapa deve ser 100% */
-    height: 600px; /* Altura do mapa */
-    margin-top: 20px; /* Espaço acima do mapa */
+    width: 100%;
+    height: 700px; 
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Animação de fade-in */
-@keyframes fadeIn {
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(30px);
@@ -207,43 +214,25 @@ nav ul li a:hover {
     }
 }
 
-.info-section {
-    animation: fadeIn 0.5s ease-in-out both;
-}
-
-/* Seção de Agendamento específica */
-#funcionalidade4 {
-    padding: 60px 20px;
-    margin: 40px 0;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    background: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%; /* Ajuste a largura aqui */
-    max-width: 12000px; /* Largura máxima da seção */
-    margin: 0 auto; /* Centralizar a seção */
-}
-
 /* Responsividade */
 @media screen and (max-width: 768px) {
     .impact-phrase h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
-    
+
     .impact-phrase p {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     .info-content h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .info-content p {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
-    /* Aumenta a altura do mapa em telas menores */
     #map {
-        height: 400px;
+        height: 500px;
     }
 }
