@@ -14,16 +14,20 @@ const MapComponent = () => {
 
         window.initMap = () => {
             const map = new window.google.maps.Map(document.getElementById('map'), {
-                zoom: 14,
-                center: { lat: -1.455833, lng: -48.503889 }, // Coordenadas de Belém, Pará
+                zoom: 12,
+                center: {  lat: -1.409349, lng: -48.470439 }, // Coordenadas da Estação das Docas
             });
 
+            // Novos pontos de carregamento
             const postos = [
-                { lat: -1.455833, lng: -48.503889 },
-                { lat: -1.43788, lng: -48.47903 },
-                { lat: -1.4483631603132014, lng: -48.49949224220992 },
+                { lat: -1.455833, lng: -48.503889 }, // Estação das Docas
+                { lat: -1.409349, lng: -48.470439 }, // Av. Dr. Freitas, 127 - Sacramenta
+                { lat: -1.384839, lng: -48.463980 }, // Av. Centenário, 1052 - Val-de-Cães
+                { lat: -1.353620, lng: -48.385899 }, // V. Passagem Santa Inês, 3 - Atalaia, Ananindeua
+                { lat: -1.364612, lng: -48.374297 }, // BR 316, nº 4.500, Km 04 - Coqueiro, Ananindeua
             ];
 
+            // Adiciona os marcadores no mapa
             postos.forEach((location) => {
                 new window.google.maps.Marker({
                     position: location,
