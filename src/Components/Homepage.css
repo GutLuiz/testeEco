@@ -235,4 +235,8 @@ nav ul li a:hover {
     #map {
         height: 500px;
     }
+
+    .logout-btn{
+        background-color: #007bff;
+    }
 }

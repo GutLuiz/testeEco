@@ -19,17 +19,21 @@ const Register = () => {
     };
 
     try {
-      const response = await registerUser(userData);
+      const response = await loginUser(userData); 
+
       if (response != null) {
-        console.log("Usuário registrado com sucesso:", response);
-        setMessage("Usuário registrado com sucesso!");
-        navigate('/homepage'); // Redireciona para a homepage após o sucesso
+        console.log("Registro bem-sucedido:", response);
+
+        setMessage(`Bem-vindo, ${username}`);
+        
+        // Salva o e-mail do usuário no localStorage
+        localStorage.setItem('userName', username);
+
+        navigate('/'); // Redireciona para a homepage após login
       }
-      setEmail(""); // Limpa o campo de email
-      setSenha(""); // Limpa o campo de senha
     } catch (error) {
-      console.error("Erro ao registrar usuário:", error);
-      setMessage("Erro ao registrar usuário: "); // Mensagem de erro
+      console.error("Erro no registro:", error);
+      setMessage("Credenciais inválidas!"); 
     }
   };
 

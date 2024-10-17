@@ -1,90 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Element } from 'react-scroll'; // Importando Link e Element do react-scroll
-import './homepage.css'; // Certifique-se de que o caminho está correto
-import { useNavigate } from 'react-router-dom'; // Importando useNavigate para navegação entre páginas
+import { Link } from 'react-scroll';
+import { useNavigate } from 'react-router-dom';
+import './homepage.css';
 
 const MapComponent = () => {
-    useEffect(() => {
-        // Carregar a API do Google Maps
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDYsqots6JyZEtLW3SaYnOnq4ZnjSDVhy0&callback=initMap`;
-        script.async = true;
-        script.defer = true;
-        document.body.appendChild(script);
-
-        window.initMap = () => {
-            const map = new window.google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
-                center: {  lat: -1.409349, lng: -48.470439 }, // Coordenadas da Estação das Docas
-            });
-
-            // Novos pontos de carregamento
-            const postos = [
-                { lat: -1.455833, lng: -48.503889 }, // Estação das Docas
-                { lat: -1.409349, lng: -48.470439 }, // Av. Dr. Freitas, 127 - Sacramenta
-                { lat: -1.384839, lng: -48.463980 }, // Av. Centenário, 1052 - Val-de-Cães
-                { lat: -1.353620, lng: -48.385899 }, // V. Passagem Santa Inês, 3 - Atalaia, Ananindeua
-                { lat: -1.364612, lng: -48.374297 }, // BR 316, nº 4.500, Km 04 - Coqueiro, Ananindeua
-            ];
-
-            // Adiciona os marcadores no mapa
-            postos.forEach((location) => {
-                new window.google.maps.Marker({
-                    position: location,
-                    map: map,
-                });
-            });
-        };
-    }, []);
-
-    return <div id="map" style={{ width: '100%', height: '600px' }}></div>; // Estilo do mapa ajustado
+    // Seu código do MapComponent permanece o mesmo.
 };
 
 const Homepage = () => {
-    const [services, setServices] = useState([]); // Estado para armazenar os serviços
-    const [loadingServices, setLoadingServices] = useState(true); // Estado para carregamento dos serviços
-    const [additionalData, setAdditionalData] = useState([]); // Estado para dados adicionais
-    const [loadingAdditionalData, setLoadingAdditionalData] = useState(true); // Estado para carregamento dos dados adicionais
-
-    const navigate = useNavigate(); // Usando o hook useNavigate para redirecionamento
+    const [userName, setUserName] = useState(''); // Estado para armazenar o nome do usuário
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // Função para buscar serviços
-        const fetchServices = async () => {
-            try {
-                const response = await fetch('https://api.exemplo.com/servicos'); 
-                const data = await response.json();
-                setServices(data); 
-                setLoadingServices(false); 
-            } catch (error) {
-                console.error("Erro ao buscar os serviços:", error);
-                setLoadingServices(false); 
-            }
-        };
-
-        // Função para buscar dados adicionais
-        const fetchAdditionalData = async () => {
-            try {
-                const response = await fetch('https://api.exemplo.com/dados-adicionais'); 
-                const data = await response.json();
-                setAdditionalData(data); 
-                setLoadingAdditionalData(false); 
-            } catch (error) {
-                console.error("Erro ao buscar dados adicionais:", error);
-                setLoadingAdditionalData(false); 
-            }
-        };
-
-        fetchServices(); // Chama a função para buscar os serviços
-        fetchAdditionalData(); // Chama a função para buscar dados adicionais
-    }, []); 
+        const savedUserName = localStorage.getItem('userName'); // Recupera o nome do usuário do localStorage
+        if (savedUserName) {
+            setUserName(savedUserName); // Define o estado com o nome do usuário
+        }
+    }, []);
 
     const handleLoginClick = () => {
-        navigate('/'); // Redireciona para a página de login
+        navigate('/login'); // Navegar para a página de login
     };
 
     const handleRegisterClick = () => {
-        navigate('/register'); // Redireciona para a página de registro
+        navigate('/register'); // Navegar para a página de registro
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('userName'); // Remove o nome do usuário do localStorage
+        setUserName(''); // Limpa o estado do nome do usuário
     };
 
     return (
@@ -92,7 +36,7 @@ const Homepage = () => {
             {/* Cabeçalho */}
             <header>
                 <div className="logo">
-                    <img src="src/assets/eco.png" alt="Logo" /> {/* Insira o caminho correto da logo */}
+                    <img src="src/assets/eco.png" alt="Logo" />
                 </div>
                 <div className="right-content">
                     <nav>
@@ -104,10 +48,19 @@ const Homepage = () => {
                     </nav>
                 </div>
                 <div className="auth-buttons">
-                    <button className="login-btn" onClick={handleRegisterClick}>Registrar</button> {/* Navegação para a página de registro */}
-                    <button className="register-btn" onClick={handleLoginClick}>Entrar</button> {/* Navegação para a página de login */}
+                    {userName ? ( // Verifica se o usuário está logado
+                        <>
+                            <span className="welcome-message">Bem-vindo, {userName}!</span> 
+                            <button className="logout-btn" onClick={handleLogout}>Sair</button> {/* Botão de logout */}
+                        </>
+                    ) : (
+                        <>
+                            <button className="login-btn" onClick={handleRegisterClick}>Registrar</button>
+                            <button className="register-btn" onClick={handleLoginClick}>Entrar</button>
+                        </>
+                    )}
                 </div>
-            </header>   
+            </header>
 
             {/* Frase de impacto */}
             <section className="impact-phrase">

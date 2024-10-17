@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Para navegação
-import { loginUser } from '../services/login-service'; // Função de login
+import { useNavigate } from 'react-router-dom'; 
+import { loginUser } from '../services/login-service'; 
 import './Login.css';
 
 const Login = () => {
-  const [username, setUsername] = useState(""); // Estado para o email
-  const [password, setPassword] = useState(""); // Estado para a senha
-  const [message, setMessage] = useState(""); // Estado para mensagens de feedback
-  const navigate = useNavigate(); // Hook para navegação
+  const [username, setUsername] = useState(""); 
+  const [password, setPassword] = useState(""); 
+  const [message, setMessage] = useState(""); 
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Previne o comportamento padrão do formulário
+    e.preventDefault(); 
 
     const userData = {
       email: username,
@@ -18,17 +18,21 @@ const Login = () => {
     };
 
     try {
-      const response = await loginUser(userData); // Chama a função de login
+      const response = await loginUser(userData); 
 
       if (response != null) {
         console.log("Login bem-sucedido:", response);
-        setMessage("Login realizado com sucesso!");
-        navigate('/homepage'); // Redireciona para a página de homepage
-      }
 
+        setMessage(`Bem-vindo, ${username}`);
+        
+        // Salva o e-mail do usuário no localStorage
+        localStorage.setItem('userName', username);
+
+        navigate('/'); // Redireciona para a homepage após login
+      }
     } catch (error) {
       console.error("Erro no login:", error);
-      setMessage("Credenciais inválidas!"); // Mensagem de erro genérica
+      setMessage("Credenciais inválidas!"); 
     }
   };
 
@@ -42,26 +46,26 @@ const Login = () => {
         </div>
         <div className="login-right">
           <h2>Entre na sua conta</h2>
-          <form className="login-form" onSubmit={handleLogin}> {/* Adiciona o onSubmit */}
+          <form className="login-form" onSubmit={handleLogin}>
             <div className="form-group">
               <input 
                 type="email" 
                 placeholder="E-mail"
-                value={username} // Vincula ao estado do username
-                onChange={(e) => setUsername(e.target.value)} // Atualiza o estado ao digitar
+                value={username}
+                onChange={(e) => setUsername(e.target.value)} 
               />
             </div>
             <div className="form-group">
               <input 
                 type="password" 
                 placeholder="Senha"
-                value={password} // Vincula ao estado do password
-                onChange={(e) => setPassword(e.target.value)} // Atualiza o estado ao digitar
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
               />
             </div>
-            <button type="submit" className="register-btn">Entrar</button> {/* Botão de submit */}
+            <button type="submit" className="register-btn">Entrar</button>
           </form>
-          {message && <p>{message}</p>} {/* Exibe mensagens de feedback */}
+          {message && <p>{message}</p>}
         </div>
       </div>
     </div>
