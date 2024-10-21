@@ -39,47 +39,14 @@ const MapComponent = () => {
 
 const Homepage = () => {
     const [userName, setUserName] = useState(''); // Estado para armazenar o nome do usuário
-    const [services, setServices] = useState([]); // Estado para armazenar os serviços
-    const [loadingServices, setLoadingServices] = useState(true); // Estado para carregamento dos serviços
-    const [additionalData, setAdditionalData] = useState([]); // Estado para dados adicionais
-    const [loadingAdditionalData, setLoadingAdditionalData] = useState(true); // Estado para carregamento dos dados adicionais
-
     const navigate = useNavigate();
 
     useEffect(() => {
-        const savedUserName = localStorage.getItem('userName'); // Recupera o nome do usuário do localStorage
+        // Recupera o nome do usuário do localStorage ao carregar a página
+        const savedUserName = localStorage.getItem('userName');
         if (savedUserName) {
-            setUserName(savedUserName); // Define o estado com o nome do usuário
+            setUserName(savedUserName);
         }
-
-        // Função para buscar serviços
-        const fetchServices = async () => {
-            try {
-                const response = await fetch('https://api.exemplo.com/servicos');
-                const data = await response.json();
-                setServices(data);
-                setLoadingServices(false);
-            } catch (error) {
-                console.error('Erro ao buscar os serviços:', error);
-                setLoadingServices(false);
-            }
-        };
-
-        // Função para buscar dados adicionais
-        const fetchAdditionalData = async () => {
-            try {
-                const response = await fetch('https://api.exemplo.com/dados-adicionais');
-                const data = await response.json();
-                setAdditionalData(data);
-                setLoadingAdditionalData(false);
-            } catch (error) {
-                console.error('Erro ao buscar dados adicionais:', error);
-                setLoadingAdditionalData(false);
-            }
-        };
-
-        fetchServices(); // Chama a função para buscar os serviços
-        fetchAdditionalData(); // Chama a função para buscar dados adicionais
     }, []);
 
     const handleLoginClick = () => {
@@ -114,13 +81,13 @@ const Homepage = () => {
                 <div className="auth-buttons">
                     {userName ? ( // Verifica se o usuário está logado
                         <>
-                            <span className="welcome-message">Bem-vindo, {userName}!</span> 
+                            <span className="welcome-message">Bem-vindo, {userName}!</span>
                             <button className="logout-btn" onClick={handleLogout}>Sair</button> {/* Botão de logout */}
                         </>
                     ) : (
                         <>
-                            <button className="login-btn" onClick={handleRegisterClick}>Registrar</button>
-                            <button className="register-btn" onClick={handleLoginClick}>Entrar</button>
+                            <button className="login-btn" onClick={handleLoginClick}>Entrar</button>
+                            <button className="register-btn" onClick={handleRegisterClick}>Registrar</button>
                         </>
                     )}
                 </div>
@@ -138,12 +105,12 @@ const Homepage = () => {
                 <div className="info-content">
                     <h2>Nossos Serviços</h2>
                     <p>
-                        <strong>Reservas de Ponto de Carregamento:</strong> Nossa plataforma oferece um sistema de agendamento 
-                        conveniente e flexível para carregamento de carros elétricos, proporcionando uma experiência tranquila 
+                        <strong>Reservas de Ponto de Carregamento:</strong> Nossa plataforma oferece um sistema de agendamento
+                        conveniente e flexível para carregamento de carros elétricos, proporcionando uma experiência tranquila
                         para os usuários.
                     </p>
                     <ul>
-                        <li>Velocidade de Recarga</li> 
+                        <li>Velocidade de Recarga</li>
                         <li>Avaliações e Feedback</li>
                         <li>Suporte</li>
                         <li>Mapa Interativo</li>
@@ -172,9 +139,9 @@ const Homepage = () => {
                 <div className="info-content">
                     <h2>Sobre nós</h2>
                     <p>
-                        <strong>Uma revolução no modo como pensamos sobre carros:</strong> Nossa empresa é dedicada a fornecer 
-                        soluções inovadoras e sustentáveis para o carregamento de carros elétricos. Estamos comprometidos em 
-                        oferecer um sistema de agendamento conveniente, utilizando o mapa de Belém para localizar nossos postos 
+                        <strong>Uma revolução no modo como pensamos sobre carros:</strong> Nossa empresa é dedicada a fornecer
+                        soluções inovadoras e sustentáveis para o carregamento de carros elétricos. Estamos comprometidos em
+                        oferecer um sistema de agendamento conveniente, utilizando o mapa de Belém para localizar nossos postos
                         de carregamento.
                     </p>
                 </div>
