@@ -4,11 +4,46 @@ import { useNavigate } from 'react-router-dom';
 import './homepage.css';
 
 const MapComponent = () => {
-    // Seu código do MapComponent permanece o mesmo.
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDYsqots6JyZEtLW3SaYnOnq4ZnjSDVhy0&callback=initMap`;
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+
+        window.initMap = () => {
+            const map = new window.google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: { lat: -1.409349, lng: -48.470439 }, // Coordenadas da Estação das Docas
+            });
+
+            const postos = [
+                { lat: -1.455833, lng: -48.503889 }, // Estação das Docas
+                { lat: -1.409349, lng: -48.470439 }, // Av. Dr. Freitas, 127 - Sacramenta
+                { lat: -1.384839, lng: -48.463980 }, // Av. Centenário, 1052 - Val-de-Cães
+                { lat: -1.353620, lng: -48.385899 }, // V. Passagem Santa Inês, 3 - Atalaia, Ananindeua
+                { lat: -1.364612, lng: -48.374297 }, // BR 316, nº 4.500, Km 04 - Coqueiro, Ananindeua
+            ];
+
+            postos.forEach((location) => {
+                new window.google.maps.Marker({
+                    position: location,
+                    map: map,
+                });
+            });
+        };
+    }, []);
+
+    return <div id="map" style={{ width: '100%', height: '600px' }}></div>;
 };
 
 const Homepage = () => {
     const [userName, setUserName] = useState(''); // Estado para armazenar o nome do usuário
+    const [services, setServices] = useState([]); // Estado para armazenar os serviços
+    const [loadingServices, setLoadingServices] = useState(true); // Estado para carregamento dos serviços
+    const [additionalData, setAdditionalData] = useState([]); // Estado para dados adicionais
+    const [loadingAdditionalData, setLoadingAdditionalData] = useState(true); // Estado para carregamento dos dados adicionais
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -16,6 +51,35 @@ const Homepage = () => {
         if (savedUserName) {
             setUserName(savedUserName); // Define o estado com o nome do usuário
         }
+
+        // Função para buscar serviços
+        const fetchServices = async () => {
+            try {
+                const response = await fetch('https://api.exemplo.com/servicos');
+                const data = await response.json();
+                setServices(data);
+                setLoadingServices(false);
+            } catch (error) {
+                console.error('Erro ao buscar os serviços:', error);
+                setLoadingServices(false);
+            }
+        };
+
+        // Função para buscar dados adicionais
+        const fetchAdditionalData = async () => {
+            try {
+                const response = await fetch('https://api.exemplo.com/dados-adicionais');
+                const data = await response.json();
+                setAdditionalData(data);
+                setLoadingAdditionalData(false);
+            } catch (error) {
+                console.error('Erro ao buscar dados adicionais:', error);
+                setLoadingAdditionalData(false);
+            }
+        };
+
+        fetchServices(); // Chama a função para buscar os serviços
+        fetchAdditionalData(); // Chama a função para buscar dados adicionais
     }, []);
 
     const handleLoginClick = () => {
