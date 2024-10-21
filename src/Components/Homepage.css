@@ -193,6 +193,30 @@ nav ul li a:hover {
   background-color: #f0f0f0;
 }
 
+.logout-btn {
+  background-color: #0e4d13be; /* Cor de fundo azul */
+  color: #fff; /* Cor do texto branca */
+  border: none; /* Remove a borda padrão */
+  padding: 8px 16px; /* Ajusta o preenchimento superior/inferior e lateral */
+  border-radius: 4px; /* Adiciona bordas arredondadas */
+  cursor: pointer; /* Muda o cursor ao passar o mouse sobre o botão */
+  font-size: 16px; /* Ajuste o tamanho da fonte se necessário */
+}
+
+/* Se desejar um efeito ao passar o mouse */
+.logout-btn:hover {
+  background-color: #0a3816; /* Um azul mais escuro ao passar o mouse */
+}
+
+.welcome-message {
+  margin-top: 10px; /* Ajuste o valor conforme necessário */
+  color: #0a0a0a; /* Adiciona uma cor para o texto, se desejar */
+  font-size: 16px; /* Ajuste o tamanho da fonte se necessário */
+}
+
+
+
+
 /* Estilos do Mapa */
 #map {
   width: 100%;

@@ -3,6 +3,7 @@ import { Link } from 'react-scroll';
 import { useNavigate } from 'react-router-dom';
 import './homepage.css';
 
+// Componente de Mapa
 const MapComponent = () => {
     useEffect(() => {
         const script = document.createElement('script');
@@ -37,13 +38,14 @@ const MapComponent = () => {
     return <div id="map" style={{ width: '100%', height: '600px' }}></div>;
 };
 
+// Componente da Homepage
 const Homepage = () => {
     const [userName, setUserName] = useState(''); // Estado para armazenar o nome do usuário
     const navigate = useNavigate();
 
     useEffect(() => {
         // Recupera o nome do usuário do localStorage ao carregar a página
-        const savedUserName = localStorage.getItem('userName');
+        const savedUserName = localStorage.getItem('userEmail');
         if (savedUserName) {
             setUserName(savedUserName);
         }
@@ -56,7 +58,7 @@ const Homepage = () => {
     const handleRegisterClick = () => {
         navigate('/register'); // Navegar para a página de registro
     };
-
+    
     const handleLogout = () => {
         localStorage.removeItem('userName'); // Remove o nome do usuário do localStorage
         setUserName(''); // Limpa o estado do nome do usuário
