@@ -26,7 +26,7 @@ const Login = () => {
         setMessage(`Bem-vindo, ${username}`);
         
         // Salva o e-mail do usuário no localStorage
-        localStorage.setItem('userName', username);
+        localStorage.setItem('userEmail', username);
 
         navigate('/'); // Redireciona para a homepage após login
       }
