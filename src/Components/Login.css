@@ -34,6 +34,10 @@
   align-items: center;
   text-align: center;
 }
+.login-logo {
+  width: 120px; /* Ajuste o tamanho conforme necessário */
+  margin-bottom: 20px; /* Espaço entre a imagem e o título */
+}
 
 .login-left h2 {
   font-size: 1.8rem;

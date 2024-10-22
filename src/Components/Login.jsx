@@ -36,13 +36,19 @@ const Login = () => {
     }
   };
 
+
+  const handleRegisterNavigation = () => {
+    navigate('/register'); // Redireciona para a página de registro
+  };
+
   return (
     <div className="login-body">
       <div className="login-container">
         <div className="login-left">
+          <img src="./src/assets/eco.png" alt="Logo" className="login-logo" />
           <h2>Não tem conta?</h2>
           <p>Crie sua conta agora</p>
-          <button className="login-btn">Logar</button>
+          <button className="login-btn" onClick={handleRegisterNavigation}>Registrar-se</button>
         </div>
         <div className="login-right">
           <h2>Entre na sua conta</h2>

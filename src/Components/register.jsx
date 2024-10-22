@@ -4,19 +4,18 @@ import { registerUser } from "../services/register-service"; // Importa a funç�
 import "./Register.css"; // Importa o CSS
 
 const Register = () => {
-  const [username, setUsername] = useState(""); 
-  const [password, setPassword] = useState(""); 
-  const [message, setMessage] = useState(""); 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     const userData = {
       email: username,
       senha: password,
     };
-
 
     try {
       const response = await registerUser(userData);
@@ -38,15 +37,20 @@ const Register = () => {
     }
   };
 
+  const handleLoginNavigation = () => {
+    navigate("/login"); // Redireciona para a página de registro
+  };
+
   return (
     <div className="register-body">
       <div className="register-container">
         <div className="register-left">
+          <img src="./src/assets/eco.png" alt="Logo" className="login-logo" />
           <h2>Já tem uma conta?</h2>
           <p>Acesse sua conta agora</p>
-          <Link to="/login">
-            <button className="login-btn">Entrar</button>
-          </Link>
+          <button className="login-btn" onClick={handleLoginNavigation}>
+            Registrar-se
+          </button>
         </div>
         <div className="register-right">
           <h2>Crie sua conta</h2>
