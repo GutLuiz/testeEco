@@ -1,0 +1,136 @@
+/* Centraliza o contêiner principal */
+.scheduling-container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  height: 100vh; /* Preenche toda a altura da tela */
+  padding: 20px;
+  background: #f4f4f4; /* Fundo suave */
+}
+
+.form-section, .summary-section {
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px; /* Largura máxima */
+  margin: 10px;
+}
+
+/* Ajustes nos textos */
+h2 {
+  font-size: 22px;
+  color: #005f56;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+p {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Estilos dos inputs e textarea */
+.form-group input, .form-group textarea {
+  padding: 10px;
+  border: 1px solid #005f56;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+/* Estilo para os campos de Data e Hora */
+.form-group input[type="date"], 
+.form-group input[type="time"] {
+  padding: 10px;
+  border: 1px solid #005f56;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* Novo estilo para o campo de seleção */
+.form-group select {
+  padding: 10px;
+  border: 1px solid #005f56;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* Estilo da seção de resumo */
+.summary-section h3 {
+  font-size: 18px;
+  color: #005f56;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+button {
+  background-color: #005f56; /* Cor de fundo do botão */
+  color: white; /* Cor do texto */
+  border: none;
+  padding: 14px 20px; /* Aumenta o tamanho do botão */
+  border-radius: 4px;
+  font-size: 18px; /* Tamanho maior para o texto */
+  font-weight: bold; /* Negrito para maior destaque */
+  cursor: pointer;
+  width: 100%; /* Garante que o botão ocupe toda a largura disponível */
+  margin-top: 20px; /* Espaçamento acima do botão */
+  text-align: center; /* Centraliza o texto */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar o botão */
+}
+
+/* Efeito de hover para o botão */
+button:hover {
+  background-color: #004844; /* Escurece a cor do botão quando passa o mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra para destaque */
+}
+
+/* Garantir que o botão seja visível e de fácil acesso */
+button:focus {
+  outline: none; /* Remove o contorno padrão ao focar no botão */
+  border: 2px solid #004844; /* Adiciona um contorno sutil ao focar */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .scheduling-container {
+    padding: 10px;
+  }
+
+  .form-section, .summary-section {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group input[type="date"],
+  .form-group input[type="time"],
+  .form-group select {
+    font-size: 16px;
+  }
+}
